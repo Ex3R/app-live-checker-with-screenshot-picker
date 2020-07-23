@@ -1,0 +1,36 @@
+---
+
+server:
+  port: ${PORT}
+
+spring:
+  slack:
+    bot:
+      token: ${SLACK_TOKEN}
+    channel:
+      channel: ${SLACK_CHANNEL}
+
+app:
+  base-filepath: ${FOLDER}
+  recreate-screenshot-on-startup: ${RECREATE_REFERENCE_SCREENSHOT_ON_STARTUP}
+
+
+
+---
+spring:
+  profiles: local
+  slack:
+    bot:
+      token: ${SLACK_TOKEN:slackToken}
+    channel:
+      channel: ${SLACK_CHANNEL:slackChannel}
+
+server:
+  port: 8080
+  address: localhost
+
+
+
+app:
+  base-filepath: ${FOLDER:/tmp/app/}
+  recreate-screenshot-on-startup: true
